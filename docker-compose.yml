@@ -1,22 +1,11 @@
 version: '3'
 
 services:
-#  listener:
-#    build: .
-#    image: system_benchmarks:local
-#    command: ./tokio_raw_socket
-  iperf-server:
-    image: mlabbe/iperf3
-    networks:
-      - shared
-    ports:
-      - "5201:5201"
-    command: -s -B 0.0.0.0 -p 5201
-#  iperf-client:
-#    image: networkstatic/iperf3
-#    networks:
-#      - shared
-#    command: -c 0.0.0.0 -p 5201
+  listener:
+    build: .
+    privileged: true
+    command: ./benchmarks.sh
+
 
 networks:
   shared:
